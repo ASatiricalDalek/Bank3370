@@ -1,0 +1,33 @@
+{
+    "generator-jhipster": {
+        "promptValues": {
+            "packageName": "com.oustudents.bank3370"
+        },
+        "jhipsterVersion": "5.7.2",
+        "applicationType": "monolith",
+        "baseName": "bank3370",
+        "packageName": "com.oustudents.bank3370",
+        "packageFolder": "com/oustudents/bank3370",
+        "serverPort": "8080",
+        "authenticationType": "jwt",
+        "cacheProvider": "ehcache",
+        "enableHibernateCache": true,
+        "websocket": false,
+        "databaseType": "sql",
+        "devDatabaseType": "h2Disk",
+        "prodDatabaseType": "mysql",
+        "searchEngine": false,
+        "messageBroker": false,
+        "serviceDiscoveryType": false,
+        "buildTool": "maven",
+        "enableSwaggerCodegen": false,
+        "jwtSecretKey": "ZjM1MzQwMGU3YjZkYTg4ODhhNDc1MzllODdkNGFjNWFkYzBhNjMwMjVjNTY4MGZmYzM0Y2I2YzZmZGZkYzI3NmMxODE1YTg5NzE4YjQwMGFiODdmYTBiMWRmMDVhYzNlNjUzOTQ4NDU0ZWJhMTA1YzQwZWE4ZGZhMDczZDM3ODQ=",
+        "clientFramework": "angularX",
+        "useSass": false,
+        "clientPackageManager": "npm",
+        "testFrameworks": [],
+        "jhiPrefix": "jhi",
+        "otherModules": [],
+        "enableTranslation": false
+    }
+}
