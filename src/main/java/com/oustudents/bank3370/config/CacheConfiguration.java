@@ -38,6 +38,14 @@ public class CacheConfiguration {
             cm.createCache(com.oustudents.bank3370.domain.User.class.getName(), jcacheConfiguration);
             cm.createCache(com.oustudents.bank3370.domain.Authority.class.getName(), jcacheConfiguration);
             cm.createCache(com.oustudents.bank3370.domain.User.class.getName() + ".authorities", jcacheConfiguration);
+            cm.createCache(com.oustudents.bank3370.domain.Patron.class.getName(), jcacheConfiguration);
+            cm.createCache(com.oustudents.bank3370.domain.Patron.class.getName() + ".bankAccounts", jcacheConfiguration);
+            cm.createCache(com.oustudents.bank3370.domain.Patron.class.getName() + ".loans", jcacheConfiguration);
+            cm.createCache(com.oustudents.bank3370.domain.BankAccount.class.getName(), jcacheConfiguration);
+            cm.createCache(com.oustudents.bank3370.domain.Loans.class.getName(), jcacheConfiguration);
+            cm.createCache(com.oustudents.bank3370.domain.LoanType.class.getName(), jcacheConfiguration);
+            cm.createCache(com.oustudents.bank3370.domain.BankAccountType.class.getName(), jcacheConfiguration);
+            cm.createCache(com.oustudents.bank3370.domain.TransactionLog.class.getName(), jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

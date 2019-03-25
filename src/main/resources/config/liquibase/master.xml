@@ -5,6 +5,15 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
 
     <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190325203840_added_entity_Patron.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190325203841_added_entity_BankAccount.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190325203842_added_entity_Loans.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190325203843_added_entity_LoanType.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190325203844_added_entity_BankAccountType.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190325203845_added_entity_TransactionLog.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="config/liquibase/changelog/20190325203841_added_entity_constraints_BankAccount.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190325203842_added_entity_constraints_Loans.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190325203845_added_entity_constraints_TransactionLog.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>
