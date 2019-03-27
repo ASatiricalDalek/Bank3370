@@ -1,0 +1,64 @@
+<div>
+    <h2 id="page-heading">
+        <span>Transaction Logs</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-transaction-log" [routerLink]="['/transaction-log/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new Transaction Log
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="transactionLogs">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Transaction</span></th>
+            <th><span>Amount</span></th>
+            <th><span>Trans Date</span></th>
+            <th><span>Bank Account</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let transactionLog of transactionLogs ;trackBy: trackId">
+                <td><a [routerLink]="['/transaction-log', transactionLog.id, 'view' ]">{{transactionLog.id}}</a></td>
+                <td>{{transactionLog.transaction}}</td>
+                <td>{{transactionLog.amount}}</td>
+                <td>{{transactionLog.transDate | date:'mediumDate'}}</td>
+                <td>
+                    <div *ngIf="transactionLog.bankAccount">
+                        <a [routerLink]="['../bank-account', transactionLog.bankAccount?.id, 'view' ]" >{{transactionLog.bankAccount?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/transaction-log', transactionLog.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/transaction-log', transactionLog.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'transaction-log/'+ transactionLog.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

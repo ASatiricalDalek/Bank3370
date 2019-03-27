@@ -1,0 +1,35 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="patron">
+            <h2><span>Patron</span> {{patron.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Patron First Name</span></dt>
+                <dd>
+                    <span>{{patron.patronFirstName}}</span>
+                </dd>
+                <dt><span>Patron Last Name</span></dt>
+                <dd>
+                    <span>{{patron.patronLastName}}</span>
+                </dd>
+                <dt><span>Patron Email</span></dt>
+                <dd>
+                    <span>{{patron.patronEmail}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/patron', patron.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

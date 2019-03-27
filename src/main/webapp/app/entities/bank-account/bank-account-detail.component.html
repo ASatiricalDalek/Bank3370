@@ -1,0 +1,47 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="bankAccount">
+            <h2><span>Bank Account</span> {{bankAccount.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Account Name</span></dt>
+                <dd>
+                    <span>{{bankAccount.accountName}}</span>
+                </dd>
+                <dt><span>Account Balance</span></dt>
+                <dd>
+                    <span>{{bankAccount.accountBalance}}</span>
+                </dd>
+                <dt><span>Insurance</span></dt>
+                <dd>
+                    <span>{{bankAccount.insurance}}</span>
+                </dd>
+                <dt><span>Bank Account Type</span></dt>
+                <dd>
+                    <div *ngIf="bankAccount.bankAccountType">
+                        <a [routerLink]="['/bank-account-type', bankAccount.bankAccountType?.id, 'view']">{{bankAccount.bankAccountType?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span>Patron</span></dt>
+                <dd>
+                    <div *ngIf="bankAccount.patron">
+                        <a [routerLink]="['/patron', bankAccount.patron?.id, 'view']">{{bankAccount.patron?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/bank-account', bankAccount.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
