@@ -1,0 +1,100 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-loans-heading">Create or edit a Loans</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!loans.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="loans.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_loanPayment">Loan Payment</label>
+                    <input type="number" class="form-control" name="loanPayment" id="field_loanPayment"
+                        [(ngModel)]="loans.loanPayment" required/>
+                    <div [hidden]="!(editForm.controls.loanPayment?.dirty && editForm.controls.loanPayment?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.loanPayment?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.loanPayment?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_loanBalance">Loan Balance</label>
+                    <input type="number" class="form-control" name="loanBalance" id="field_loanBalance"
+                        [(ngModel)]="loans.loanBalance" required/>
+                    <div [hidden]="!(editForm.controls.loanBalance?.dirty && editForm.controls.loanBalance?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.loanBalance?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.loanBalance?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_startDate">Start Date</label>
+                    <div class="input-group">
+                        <input id="field_startDate" type="text" class="form-control" name="startDate" ngbDatepicker  #startDateDp="ngbDatepicker" [(ngModel)]="loans.startDate"
+                        required/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="startDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                    <div [hidden]="!(editForm.controls.startDate?.dirty && editForm.controls.startDate?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.startDate?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_endDate">End Date</label>
+                    <div class="input-group">
+                        <input id="field_endDate" type="text" class="form-control" name="endDate" ngbDatepicker  #endDateDp="ngbDatepicker" [(ngModel)]="loans.endDate"
+                        required/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="endDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                    <div [hidden]="!(editForm.controls.endDate?.dirty && editForm.controls.endDate?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.endDate?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_loanType">Loan Type</label>
+                    <select class="form-control" id="field_loanType" name="loanType" [(ngModel)]="loans.loanType">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="loanTypeOption.id === loans.loanType?.id ? loans.loanType : loanTypeOption" *ngFor="let loanTypeOption of loantypes; trackBy: trackLoanTypeById">{{loanTypeOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_patron">Patron</label>
+                    <select class="form-control" id="field_patron" name="patron" [(ngModel)]="loans.patron" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="patronOption.id === loans.patron?.id ? loans.patron : patronOption" *ngFor="let patronOption of patrons; trackBy: trackPatronById">{{patronOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

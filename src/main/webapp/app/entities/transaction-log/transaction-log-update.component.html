@@ -1,0 +1,73 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-transaction-log-heading">Create or edit a Transaction Log</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!transactionLog.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="transactionLog.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_transaction">Transaction</label>
+                    <input type="text" class="form-control" name="transaction" id="field_transaction"
+                        [(ngModel)]="transactionLog.transaction" required/>
+                    <div [hidden]="!(editForm.controls.transaction?.dirty && editForm.controls.transaction?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.transaction?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_amount">Amount</label>
+                    <input type="number" class="form-control" name="amount" id="field_amount"
+                        [(ngModel)]="transactionLog.amount" required/>
+                    <div [hidden]="!(editForm.controls.amount?.dirty && editForm.controls.amount?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.amount?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.amount?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_transDate">Trans Date</label>
+                    <div class="input-group">
+                        <input id="field_transDate" type="text" class="form-control" name="transDate" ngbDatepicker  #transDateDp="ngbDatepicker" [(ngModel)]="transactionLog.transDate"
+                        required/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="transDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                    <div [hidden]="!(editForm.controls.transDate?.dirty && editForm.controls.transDate?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.transDate?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_bankAccount">Bank Account</label>
+                    <select class="form-control" id="field_bankAccount" name="bankAccount" [(ngModel)]="transactionLog.bankAccount">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="bankAccountOption.id === transactionLog.bankAccount?.id ? transactionLog.bankAccount : bankAccountOption" *ngFor="let bankAccountOption of bankaccounts; trackBy: trackBankAccountById">{{bankAccountOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

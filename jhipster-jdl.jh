@@ -1,0 +1,57 @@
+entity Patron 
+{
+    patronFirstName String required,
+    patronLastName String required,
+    patronEmail String
+}
+
+entity BankAccount
+{
+	accountName String required,
+    accountBalance Double required,
+    insurance Boolean required
+}
+
+entity Loans
+{
+    loanPayment Integer required,
+    loanBalance Integer required,
+    startDate LocalDate required,
+    endDate LocalDate required
+}
+
+entity LoanType
+{
+	loanCategory String required,
+    interestRate Integer required,
+}
+
+entity BankAccountType
+{
+	accountType String required,
+    accountInterestRate Float required,
+}
+
+entity TransactionLog
+{
+	transaction String required,
+    amount Integer required,
+    transDate LocalDate required
+}
+
+relationship OneToOne 
+{
+	BankAccount to BankAccountType
+    Loans to LoanType
+    TransactionLog to BankAccount
+}
+
+relationship OneToMany
+{
+	Patron to BankAccount
+    Patron to Loans
+}
+
+
+
+
